@@ -82,6 +82,7 @@ export default ({ data }) => {
               >
                 <a
                   href="https://daringfireball.net/projects/markdown/"
+                  target="_blank"
                   css={css`
                     text-shadow: none;
                   `}
@@ -123,25 +124,7 @@ export default ({ data }) => {
       >
         <Link to="/blog">Blog</Link>
         <div>
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <div key={node.id}>
-              <h3
-                css={css`
-                  margin-bottom: ${rhythm(1 / 4)};
-                `}
-              >
-                {node.frontmatter.title}{" "}
-                <span
-                  css={css`
-                    color: #bbb;
-                  `}
-                >
-                  — {node.frontmatter.date}
-                </span>
-              </h3>
-              <p>{node.excerpt}</p>
-            </div>
-          ))}
+          <Preview />
         </div>
       </div>
     </HomeLayout>

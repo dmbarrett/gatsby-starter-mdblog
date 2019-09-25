@@ -8,7 +8,7 @@ export default props => (
     query={graphql`
       query {
         allMarkdownRemark(
-          limit: 1
+          limit: 2
           sort: { fields: [frontmatter___date], order: DESC }
         ) {
           edges {
@@ -26,26 +26,14 @@ export default props => (
     `}
     render={data => (
       <div>
-        {/* {data.allMarkdownRemark.edges.map(({ node }) => (
+        {console.log(data)}
+        {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
-            <h3
-              css={css`
-                margin-bottom: ${rhythm(1 / 4)};
-              `}
-            >
-              {node.frontmatter.title}{" "}
-              <span
-                css={css`
-                  color: #bbb;
-                `}
-              >
-                — {node.frontmatter.date}
-              </span>
-            </h3>
+            <h3>{node.frontmatter.title}</h3>
+            <p>{node.frontmatter.date}</p>
             <p>{node.excerpt}</p>
           </div>
-        ))} */}
-        <h1>{data.allMarkdownRemark.frontmatter.title}</h1>
+        ))}
       </div>
     )}
   />
